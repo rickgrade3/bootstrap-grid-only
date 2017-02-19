@@ -14,7 +14,7 @@
 //
 // Extra small screen / phone
 //** Deprecated `@screen-xs` as of v3.0.1
-@screen-xs:                  480px;
+@screen-xs:                  400px;
 //** Deprecated `@screen-xs-min` as of v3.2.0
 @screen-xs-min:              @screen-xs;
 //** Deprecated `@screen-phone` as of v3.0.1
@@ -115,7 +115,7 @@
 //
 // Rows contain and clear the floats of your columns.
 
-.row {
+.row,.flex-row {
   .make-row();
 }
 
@@ -171,14 +171,17 @@
 .container-fluid:before,
 .container-fluid:after,
 .row:before,
-.row:after {
+.row:after,
+.flex-row:before,
+.flex-row:after{
   content: " ";
   display: table;
 }
 .clearfix:after,
 .container:after,
 .container-fluid:after,
-.row:after {
+.row:after,
+.flex-row:after{
   clear: both;
 }
 
@@ -203,3 +206,37 @@
           box-sizing: border-box;
 }
 
+
+/*
+  The other things
+*/
+.center-block-vertical{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.text-center{text-align:center;}
+.text-left{text-align:left;}
+.text-right{text-align:right;}
+.flex-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.ap-16-9{padding-top:62.5%;}
+.ap-1-1{padding-top:100%;}
+.ap-4-3{padding-top:75%}
+.ap-9-16{padding-top:177.8%;}
+.ap-3-4{padding-top:133.3%;}
+.bg-cover{
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center center;
+}
+.round{
+    border-radius:50%;
+    overflow:hidden;
+}
