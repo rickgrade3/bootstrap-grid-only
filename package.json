@@ -4,7 +4,8 @@
   "description": "Bootstrap's grid and responsive utility classes only, without any extras. Lightweight yet still powerful. Style to taste. Works with LessPHP.",
   "main": "grid.css.less",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "lessc grid.css.less basic-grid-1.css --clean-css=\"--s1 --advanced --compatibility=ie8\""
   },
   "repository": {
     "type": "git",
