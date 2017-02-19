@@ -5,7 +5,8 @@
   "main": "grid.css.less",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "lessc grid.css.less basic-grid-1.css --clean-css=\"--s1 --advanced --compatibility=ie8\""
+    "start" : "lessc grid.css.less basic-grid-1.css --clean-css=\"--s1 --advanced --compatibility=ie8\"",
+    "start-no-clean" : "lessc grid.css.less basic-grid-1.css"
   },
   "repository": {
     "type": "git",
