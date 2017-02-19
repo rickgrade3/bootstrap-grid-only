@@ -1,0 +1,92 @@
+
+
+
+.make-rule-root(@className,@rule,@sizeName){
+	
+	.@{className}-@{sizeName} {
+		@rule();
+	}	
+}
+
+
+
+.make-rule-by-scale(@className,@rule,@sizeName,@min-screen-size,@max-screen-size) {
+	& when (@min-screen-size < 0) and (@max-screen-size > 0) {
+		@media (max-width: @max-screen-size) {
+	    .make-rule-root(@className,@rule,@sizeName);
+	  }
+  }
+  & when (@min-screen-size > 0) and (@max-screen-size > 0) {
+    @media (max-width: @min-screen-size) and (max-width: @max-screen-size) {
+	    .make-rule-root(@className,@rule,@sizeName);
+	  }
+  }
+  & when (@min-screen-size > 0) and (@max-screen-size < 0) {
+  	@media (min-width: @min-screen-size) {
+    	.make-rule-root(@className,@rule,@sizeName);
+  	}
+  }  
+}
+
+
+.make-responsive-util-attribute(@className,@rule) {	
+	.make-rule-by-scale(@className,@rule,xs,-1,@screen-xs-max);
+	.make-rule-by-scale(@className,@rule,sm,@screen-sm-min,@screen-sm-max);
+	.make-rule-by-scale(@className,@rule,md,@screen-md-min,@screen-md-max);
+	.make-rule-by-scale(@className,@rule,lg,@screen-lg-min,-1);	
+}
+
+.make-extra-responsive-util(){
+	@text-align-left-rule: {
+		text-align:left!important;
+	};
+	.make-responsive-util-attribute(text-align-left,@text-align-left-rule);
+	@text-align-right-rule: {
+		text-align:right!important;
+	};
+	.make-responsive-util-attribute(text-align-right,@text-align-right-rule);
+	@text-align-center-rule:{
+		text-align: center!important;
+	};
+	.make-responsive-util-attribute(text-align-center,@text-align-center-rule);
+	@margin-left-auto-rule:{
+		margin-left:auto!important;
+	};
+	.make-responsive-util-attribute(margin-left-auto,@margin-left-auto-rule);
+	@margin-right-auto-rule:{
+		margin-right:auto!important;
+	};
+	.make-responsive-util-attribute(margin-right-auto,@margin-right-auto-rule);
+	@margin-auto-rule:{
+		margin-left:auto!important;
+		margin-right:auto!important;
+	};
+	.make-responsive-util-attribute(margin-auto,@margin-auto-rule);		
+	@min-height-auto-rule:{
+		min-height:auto!important;
+	};
+	.make-responsive-util-attribute(min-height-auto,@min-height-auto-rule);
+	@transition-none-rule:{
+		transition:none!important;
+		-webkit-transition:none!important;
+		-moz-transition:none!important;
+	};
+	.make-responsive-util-attribute(transition-none,@transition-none-rule);			
+	@padding-left-0-rule:{
+		padding-left:0px!important;
+	};
+	.make-responsive-util-attribute(padding-left-0,@padding-left-0-rule);
+	@padding-right-0-rule:{
+		padding-right:0px!important;
+	};
+	.make-responsive-util-attribute(padding-right-0,@padding-right-0-rule);
+	@padding-top-0-rule:{
+		padding-top:0px!important;
+	};
+	.make-responsive-util-attribute(padding-top-0,@padding-top-0-rule);
+	@padding-bottom-0-rule:{
+		padding-bottom:0px!important;
+	};
+	.make-responsive-util-attribute(padding-bottom-0,@padding-bottom-0-rule);
+	
+}
